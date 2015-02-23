@@ -12,6 +12,8 @@ namespace Users;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 
+use Users\Model\Grid;
+use Users\Model\GoGrid;
 use Users\Model\User;
 use Users\Model\City;
 use Users\Model\Educ;
@@ -47,6 +49,19 @@ class Module
             'factories' => array(
                  // çàïğîñû 
                  
+                 
+                 'Grid' => function($sm){
+                    $GridGateway = $sm->get('GridGateway');
+                    $table = new GoGrid($GridGateway);
+                    return $table;
+                 } ,
+                 
+                 'GridGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Grid());
+                    return new TableGateway('user', $dbAdapter, null,$resultSetPrototype);
+                 },
                                
                  
                  //áàçà äàííûõ
@@ -89,25 +104,7 @@ class Module
                     return new TableGateway('city', $dbAdapter, null,$resultSetPrototype);
                  },
                  
-                 // ÔÎĞÌÛ
-                 'LoginForm' => function ($sm) {
-                    $form = new \Users\Form\RegisterForm();
-                    $form->setInputFilter($sm->get('RegisterFilter'));
-                    return $form;
-                 },
-                 'RegisterForm' => function ($sm) {
-                    $form = new \Users\Form\RegisterForm();
-                    $form->setInputFilter($sm->get('RegisterFilter'));
-                    return $form;
-                 },
-                 //ÔÈËÜÒĞÛ
-                 'LoginFilter' => function ($sm) {
-                        return new \Users\Form\LoginFilter();
-                  },
-                  'RegisterFilter' => function ($sm) {
-                        return new \Users\Form\RegisterFilter();
-                  },
-                   
+                                    
             ),
             'invokables' => array(),
             'services' => array(),
