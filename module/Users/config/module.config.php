@@ -3,10 +3,7 @@
 return array(
     'controllers' => array(
     'invokables' => array(
-        'Users\Controller\Index' => 'Users\Controller\IndexController',
-        'Users\Controller\Register' => 'Users\Controller\RegisterController',
-        'Users\Controller\Login' => 'Users\Controller\LoginController',
-        'Users\Controller\UserManager' => 'Users\Controller\UserManagerController',
+            'Users\Controller\UserManager' => 'Users\Controller\UserManagerController',
         
       ),
     ),
@@ -18,53 +15,13 @@ return array(
                       'route' => '/users',
                       'defaults' => array(
                             '__NAMESPACE__' => 'Users\Controller',
-                            'controller' => 'Index',
-                            'action' => 'index',
+                            'controller' => 'Users\Controller\UserManager',
+                            'action' => 'menu',
                        ),
                   ),
                 'may_terminate' => true,
                 'child_routes' => array(
-                  
-                    
-                    'users' => array(
-                        'type'    => 'Segment',
-                        'options' => array(
-                            'route'    => '/users[/:action]',
-                            'constraints' => array(
-                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            ),
-                        	'defaults' => array(
-                        		'controller' => 'Users\Controller\Index',
-                        		'action'     => 'index',
-                        	),                        		
-                        ),
-                    ),
-                    'login' => array(
-                        'type'    => 'Segment',
-                        'options' => array(
-                            'route'    => '/login[/:action]',
-                            'constraints' => array(
-                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            ),
-                        	'defaults' => array(
-                        		'controller' => 'Users\Controller\Login',
-                        		'action'     => 'index',
-                        	),                        		
-                        ),
-                    ),
-                	'register' => array(
-               			'type'    => 'Segment',
-               			'options' => array(
-               				'route'    => '/register[/:action]',
-               				'constraints' => array(
-               					'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-               				),
-               				'defaults' => array(
-               					'controller' => 'Users\Controller\Register',
-               					'action'     => 'index',
-               				),
-               			),
-                	), 
+                   
                 	'user-manager' => array(
                 		'type'    => 'Segment',
                 		'options' => array(
@@ -79,20 +36,7 @@ return array(
                 			),
                 		),
                 	),
-                    'upload-manager' => array(
-                		'type'    => 'Segment',
-                		'options' => array(
-                			'route'    => '/upload-manager[/:action[/:id]]',
-                			'constraints' => array(
-                				'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                				'id'     => '[a-zA-Z0-9_-]*',                				
-                			),
-                			'defaults' => array(
-                				'controller' => 'Users\Controller\UploadManager',
-                				'action'     => 'index',
-                			),
-                		),
-                	),
+                    
                     
                   ),
                 ),

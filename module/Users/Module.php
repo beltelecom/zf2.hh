@@ -15,8 +15,6 @@ use Zend\Mvc\MvcEvent;
 use Users\Model\Grid;
 use Users\Model\GoGrid;
 use Users\Model\User;
-use Users\Model\City;
-use Users\Model\Educ;
 use Users\Model\UserTable;
 
 use Zend\Db\ResultSet\ResultSet;

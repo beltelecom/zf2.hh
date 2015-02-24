@@ -1,7 +1,6 @@
 <?php
 namespace Users\Model;
 
-use Zend\Db\Adapter\Adapter;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 
@@ -23,7 +22,6 @@ class UserTable
          
    public function editEduc($id)
     {
-      
         $rowset = $this -> tableGateway-> update(array('education' => $id['education']), array('id_user' => $id['id']) );
     }    
    

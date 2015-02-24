@@ -15,9 +15,5 @@ class Grid
 		$this->name		= (isset($data['city'])) ? $data['city'] : null;
 		
 	}
-	
-	public function getArrayCopy()
-	{
-		return get_object_vars($this);
-	}	
+			
 }

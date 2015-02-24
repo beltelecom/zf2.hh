@@ -12,7 +12,7 @@ class GoGrid
     public function __construct(TableGateway $tableGateway)
     {
         $this ->tableGateway = $tableGateway;
-        $this ->adapter =  $adapter = new \Zend\Db\Adapter\Adapter(array(
+        $this ->adapter = new \Zend\Db\Adapter\Adapter(array(
             'driver' => 'Pdo_Mysql',
             'database' => 'zf',
             'username' => 'root',
