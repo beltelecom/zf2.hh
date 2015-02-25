@@ -133,17 +133,7 @@ Ext.create('Ext.container.Viewport', {
                       items: [ childPanel1,childPanel2 ]
              }); 
              
-var store = Ext.create('Ext.data.JsonStore', {     // определение хранилища для удаленного источника данных
-                                fields: [ 'id','name'],   
-                                proxy: {                    // описание proxy-объекта, кторый будет запрашивать сервер
-                                       type: 'ajax',           // тип прокси = Ajax
-                                       url: '/users/user-manager/index1',         
-                                       reader: {
-                                             type: 'json',       
-                                             root: 'data.users'      // здесь свойство JSON объекта в котором передается сам массив данных
-                                             }
-                                }
-});
+
 
 Ext.Ajax.request({ 
                    url: '/users/user-manager/menu',
